@@ -89,8 +89,8 @@ namespace PlayersStory
         {
 
             Loser.Health -= Winner.AttkPwr;
-            Loser.DisplayPlayerStatus();
-            Winner.DisplayPlayerStatus();
+            UIManager.PrintStatus(Winner);
+            UIManager.PrintStatus(Loser);  
 
         }
     }
