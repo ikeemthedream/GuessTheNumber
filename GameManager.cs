@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PlayersStory
 {
-    public class TextManager
+    public class GameManager
     {
         public static void IntroText(Player User, Player opponent)
         {

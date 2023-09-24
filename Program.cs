@@ -8,8 +8,8 @@ class Program
         Player player = new Player();
         Player opponent= new Player("Ikeem");
 
-        TextManager.IntroText(player, opponent);
-        TextManager.Game(player, opponent);
+        GameManager.IntroText(player, opponent);
+        GameManager.Game(player, opponent);
 
     }
 }
