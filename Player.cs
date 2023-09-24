@@ -22,12 +22,5 @@ namespace PlayersStory
             AttkPwr = 50;
             Health = 100;
         }
-
-        public void DisplayPlayerStatus()
-        {
-            Console.WriteLine($"Name: {Name}" +
-                $"\nHealth: {Math.Abs(Health)}" +
-                $"\nAttkPwr: {AttkPwr}\n");
-        }
     }
 }
