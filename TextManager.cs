@@ -87,11 +87,7 @@ namespace PlayersStory
 
         public static void Attack(Player Winner, Player Loser)
         {
-
             Loser.Health -= Winner.AttkPwr;
-            UIManager.PrintStatus(Winner);
-            UIManager.PrintStatus(Loser);  
-
         }
     }
 }
