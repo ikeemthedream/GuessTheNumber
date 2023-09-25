@@ -22,15 +22,11 @@ namespace PlayersStory
             int targetNumber;
             int userNumber;
             int opponentNumber;
-
-            int result1;
-            int result2;
             #endregion
             while (true)
             {
-                GettingUserInput(User, opponent, out targetNumber, out userNumber, out opponentNumber);
-                CalculateResult(targetNumber, userNumber, opponentNumber, out result1, out result2);
-                ComparResults(User, opponent, result1, result2);
+                GetUsersInput(User, opponent, out targetNumber, out userNumber, out opponentNumber);
+                CompareResults(User, opponent, userNumber, opponentNumber, targetNumber);
                 if (User.Health > 0 && opponent.Health > 0)
                 {
                     continue;
@@ -42,7 +38,7 @@ namespace PlayersStory
                 }
             }
         }
-        private static void GettingUserInput(Player User, Player opponent, out int targetNumber, out int userNumber, out int opponentNumber)
+        private static void GetUsersInput(Player User, Player opponent, out int targetNumber, out int userNumber, out int opponentNumber)
         {
             ShowStatus(User, opponent);
             #region Host Pick
@@ -62,23 +58,18 @@ namespace PlayersStory
             PausePhase();
             #endregion
         }
-        private static void CalculateResult(int targetNumber, int userNumber, int opponentNumber, out int result1, out int result2)
-        {
-            result1 = targetNumber - userNumber;
-            result2 = targetNumber - opponentNumber;
-        }
-        private static void ComparResults(Player User, Player opponent, int result1, int result2)
+        private static void CompareResults(Player User, Player opponent, int result1, int result2, int targetNumber)
         {
             #region Condition
-            if (result1 < result2)
+            if (result1 >= targetNumber && result1 < result2 || result1 <= targetNumber && result1 > result2)
             {
                 Console.WriteLine($"{User.Name} Wins\n");
-                Attack(User, opponent);
+                AttackPhase(User, opponent);
             }
-            else if (result2 < result1)
+            else if (result2 >= targetNumber && result2 < result1 || result2 <= targetNumber && result2 > result1)
             {
                 Console.WriteLine("Ikeem Wins\n");
-                Attack(opponent, User);
+                AttackPhase(opponent, User);
             }
             ShowStatus(User, opponent);
             Console.ReadKey();
@@ -91,7 +82,7 @@ namespace PlayersStory
             Console.ReadKey();
             Console.Clear();
         }
-        public static void Attack(Player Winner, Player Loser)
+        public static void AttackPhase(Player Winner, Player Loser)
         {
             Loser.Health -= Winner.AttkPwr;
         }
